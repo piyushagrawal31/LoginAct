@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.rucha.loginact">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".ListViewActivity"
+            android:label="ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".GalleryUploadActivity"
+            android:label="GalleryUploadActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".Fragments.woFragment.WofTitleListActivity"
+            android:label="WofTitleListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".Fragments.woFragment.WofQuoteListActivity"
+            android:label="WofQuoteListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.Fragments.woFragment.WofTitleListActivity" />
+        </activity>
+        <activity
+            android:name=".Fragments.WFragment.ViewQuoteActivity"
+            android:label="ViewQuoteActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".Database.DatabaseActivity"
+            android:label="DatabaseActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".MenuExample.MenuActivity"
+            android:label="MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+
+        <!--<service android:name=".Services.MusicService" />-->
+
+        <!--<activity-->
+            <!--android:name=".Services.Activity.MusicServiceActivity"-->
+            <!--android:label="MusicService"-->
+            <!--android:theme="@style/AppTheme.NoActionBar">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value="com.example.rucha.loginact.WelcomeActivity" />-->
+        <!--</activity>-->
+        <activity android:name=".Fragments.DialogFragment.Activity.DateTimeActivity"
+            android:label="PickDateTime"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+    </activity>
+    </application>
+
+</manifest>

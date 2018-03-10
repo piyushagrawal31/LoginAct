@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.rucha.loginact.WelcomeActivity"
+    tools:showIn="@layout/activity_welcome">
+
+    <TextView
+        android:id="@+id/lblWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+
+        />
+
+    <ImageView
+        android:id="@+id/dispImg"
+        android:layout_width="325dp"
+        android:layout_height="325dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        />
+
+
+    <Button
+        android:id="@+id/btnListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dispImg"
+        android:layout_below="@+id/dispImg"
+        android:layout_marginTop="13dp"
+        android:text="List View" />
+
+    <Button
+        android:id="@+id/btnImagefromGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnListView"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/btnWofTitleList"
+        android:text="Upload Image from Gallery" />
+
+    <Button
+        android:id="@+id/btnWofTitleList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnListView"
+        android:layout_toEndOf="@+id/btnListView"
+        android:text="W/o Fragment" />
+
+    <Button
+        android:id="@+id/btnWfQuotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnListView"
+        android:layout_below="@+id/btnListView"
+        android:text="W Fragment" />
+
+    <Button
+        android:id="@+id/btnDatabase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnWfQuotes"
+        android:layout_toEndOf="@+id/btnWfQuotes"
+        android:text="Database" />
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnDatabase"
+        android:layout_toEndOf="@+id/btnDatabase"
+        android:text="Menu" />
+
+    <Button
+        android:id="@+id/btnMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnMenu"
+        android:layout_toEndOf="@+id/btnMenu"
+        android:text="Music" />
+
+    <Button
+        android:id="@+id/btnDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDatabase"
+        android:layout_toEndOf="@+id/imgbtnUpload"
+        android:text="DateTime" />
+
+    <ImageButton
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="40dp"
+        android:layout_weight="1"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <ImageButton
+        android:id="@+id/imgbtnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgBack"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/imgBack"
+        android:layout_weight="1"
+        app:srcCompat="@android:drawable/ic_menu_upload" />
+
+   </RelativeLayout>
+
+
