@@ -8,10 +8,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -24,9 +31,11 @@ import com.example.rucha.loginact.Fragments.DialogFragment.Activity.DateTimeActi
 import com.example.rucha.loginact.Fragments.WFragment.ViewQuoteActivity;
 import com.example.rucha.loginact.Fragments.woFragment.WofTitleListActivity;
 import com.example.rucha.loginact.MenuExample.MenuActivity;
+import com.example.rucha.loginact.Services.Activity.MusicServiceActivity;
 import com.example.rucha.loginact.Services.MusicService;
 
-public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
     public static String welUserName = "UserName";
     public static String welPassword = "Password";
@@ -45,12 +54,13 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private Button lclbtnDateTime;
     private int Delay = 500;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lcllblWelcome = findViewById(R.id.lblWelcome);
@@ -102,6 +112,52 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         lclbtnDateTime = findViewById(R.id.btnDateTime);
         lclbtnDateTime.setOnClickListener(this);
 
+        //        Navigation View starts
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+//        Navigation View ends
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -140,13 +196,43 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(intentDatabase);
         }
         else if (view == lclbtnMusic){
-            Intent intentMusic = new Intent(WelcomeActivity.this, MusicService.class);
+            Intent intentMusic = new Intent(WelcomeActivity.this, MusicServiceActivity.class);
             startActivity(intentMusic);
         }
         else if (view == lclbtnDateTime){
             Intent intentDateTime = new Intent(WelcomeActivity.this, DateTimeActivity.class);
             startActivity(intentDateTime);
         }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+//            Sharing our app
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share this app");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, "Welcome to Login App");
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     class LoadImage extends AsyncTask<Integer, Integer, Bitmap>{

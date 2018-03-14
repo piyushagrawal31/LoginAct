@@ -24,6 +24,10 @@ public class MusicService extends IntentService{
     private MediaPlayer mediaPlayer;
     private int lclStartId;
 
+    public MusicService(){
+        super("MusicService");
+    };
+
     public MusicService(String name) {
         super(name);
     }
@@ -90,6 +94,16 @@ public class MusicService extends IntentService{
         return START_NOT_STICKY;
     }
 
+    @Override
+    public void onDestroy() {
+
+        if (null != mediaPlayer) {
+
+            mediaPlayer.stop();
+            mediaPlayer.release();
+
+        }
+    }
 //    Can't bind to this service
 
     @Nullable

@@ -13,6 +13,8 @@
     <string name="start_service_string">Start Music</string>
     <string name="btn_show_datepicker">Change Time</string>
     <string name="btn_show_timepicker">Change Date</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
     <string-array name="Authors">
         <item>Albert Einstein</item>
