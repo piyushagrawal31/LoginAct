@@ -2,7 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.rucha.loginact">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,8 +29,9 @@
             android:label="@string/title_activity_welcome"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
+                <action android:name="android.intent.action.SEND" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.rucha.loginact.LoginActivity" />
@@ -85,17 +93,16 @@
                 android:value="com.example.rucha.loginact.WelcomeActivity" />
         </activity>
 
-         <service android:name=".Services.MusicService" />
+        <service android:name=".Services.MusicService" />
 
-
-         <activity
-         android:name=".Services.Activity.MusicServiceActivity"
-         android:label="MusicService"
-         android:theme="@style/AppTheme.NoActionBar">
-         <meta-data
-         android:name="android.support.PARENT_ACTIVITY"
-         android:value="com.example.rucha.loginact.WelcomeActivity" />
-         </activity>
+        <activity
+            android:name=".Services.Activity.MusicServiceActivity"
+            android:label="MusicService"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
         <activity
             android:name=".Fragments.DialogFragment.Activity.DateTimeActivity"
             android:label="PickDateTime"
@@ -104,9 +111,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.rucha.loginact.WelcomeActivity" />
         </activity>
-        <activity android:name=".NavActivity"
+        <activity
+            android:name=".NavActivity"
             android:label="NavigationActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- <activity android:name=".Broadcast.SimpleBroadcastActivity" -->
+        <!-- android:label="@string/app_name"></activity> -->
+        <activity android:name=".Location.GetLocationActivity"
+            android:label="GetLocationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.rucha.loginact.WelcomeActivity" />
+        </activity>
+
+        <!-- For static registration of broadcast receiver -->
+        <receiver
+                android:name=".Broadcast.Receiver.BCastWifiReceiver"
+             android:exported="false" >
+             <intent-filter>
+                 <action android:name="course.examples.BroadcastReceiver.show_toast" >
+                 </action>
+             </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

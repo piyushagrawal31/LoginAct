@@ -30,6 +30,7 @@ import com.example.rucha.loginact.Database.DatabaseActivity;
 import com.example.rucha.loginact.Fragments.DialogFragment.Activity.DateTimeActivity;
 import com.example.rucha.loginact.Fragments.WFragment.ViewQuoteActivity;
 import com.example.rucha.loginact.Fragments.woFragment.WofTitleListActivity;
+import com.example.rucha.loginact.Location.GetLocationActivity;
 import com.example.rucha.loginact.MenuExample.MenuActivity;
 import com.example.rucha.loginact.Services.Activity.MusicServiceActivity;
 import com.example.rucha.loginact.Services.MusicService;
@@ -52,6 +53,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private Button lclbtnMenu;
     private Button lclbtnMusic;
     private Button lclbtnDateTime;
+    private Button lclbtnGetLocation;
     private int Delay = 500;
 
 
@@ -111,6 +113,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         //Date Time Picker
         lclbtnDateTime = findViewById(R.id.btnDateTime);
         lclbtnDateTime.setOnClickListener(this);
+
+        //Get Location
+        lclbtnGetLocation = findViewById(R.id.btnGetLocation);
+        lclbtnGetLocation.setOnClickListener(this);
 
         //        Navigation View starts
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -202,6 +208,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         else if (view == lclbtnDateTime){
             Intent intentDateTime = new Intent(WelcomeActivity.this, DateTimeActivity.class);
             startActivity(intentDateTime);
+        }
+        else if (view == lclbtnGetLocation){
+            Intent intentGetLoc = new Intent(WelcomeActivity.this, GetLocationActivity.class);
+            startActivity(intentGetLoc);
         }
     }
 

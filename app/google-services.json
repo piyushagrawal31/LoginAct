@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "418383505743",
+    "firebase_url": "https://loginact-e0093.firebaseio.com",
+    "project_id": "loginact-e0093",
+    "storage_bucket": "loginact-e0093.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418383505743:android:1f4f555afb3d995f",
+        "android_client_info": {
+          "package_name": "com.example.rucha.loginact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418383505743-1ddd7ggnvh97cohunephsb9bsv9hdasu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rucha.loginact",
+            "certificate_hash": "981736fc220004497f630d6754c59ee5070075b3"
+          }
+        },
+        {
+          "client_id": "418383505743-9lq9v340513vbcnfoctaoud1rtk0ori6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAab7YOn5v-SzovKxx01Evd1D098g16Zts"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418383505743-9lq9v340513vbcnfoctaoud1rtk0ori6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
