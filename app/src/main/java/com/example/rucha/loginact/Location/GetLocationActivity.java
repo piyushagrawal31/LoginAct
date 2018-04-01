@@ -1,10 +1,13 @@
 package com.example.rucha.loginact.Location;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
@@ -36,6 +39,8 @@ public class GetLocationActivity extends AppCompatActivity {
     private static final float MIN_ACCURACY = 25.0f;
     private static final float MIN_LAST_READ_ACCURACY = 500.0f;
     private static final float MIN_DISTANCE = 10.0f;
+    private static final int NETWORK_PERM_CODE = 20;
+    private boolean permissionGranted = false;
 
     // Views for display location information
     private TextView mAccuracyView;
@@ -123,6 +128,9 @@ public class GetLocationActivity extends AppCompatActivity {
     protected void onResume() {
 
         super.onResume();
+        if (mBestReading == null)
+            return;
+
         if (mBestReading.getAccuracy() > MIN_LAST_READ_ACCURACY ||
                 mBestReading.getTime() < System.currentTimeMillis() - TWO_MIN) {
 
@@ -178,7 +186,7 @@ public class GetLocationActivity extends AppCompatActivity {
         mAccuracyView.setText("Accuracy: " + location.getAccuracy());
 
         mTimeView.setText("Time: " + new SimpleDateFormat("MM/dd/yyyy HH:mm:ss",
-                       Locale.getDefault()).format(new Date(location.getTime())));
+                Locale.getDefault()).format(new Date(location.getTime())));
 
         mLatView.setText("Latitude: "+ location.getLatitude());
 
@@ -212,12 +220,15 @@ public class GetLocationActivity extends AppCompatActivity {
             }
         }
 
+        if (mBestReading == null)
+            return bestResult;
         // Return best reading or null
         if (bestAccuracy < minAccuracy || (System.currentTimeMillis() - bestAge) > maxAge) {
             return null;
         }else  {
             return bestResult;
         }
+//        return bestResult;
     }
 
     private boolean checkLocationPermission() {
@@ -226,9 +237,29 @@ public class GetLocationActivity extends AppCompatActivity {
                 ContextCompat.checkSelfPermission(getApplicationContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(getApplicationContext(),
-                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermission();
             return false;
-
+        }
         return true;
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION}, NETWORK_PERM_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == NETWORK_PERM_CODE) {
+            for (int i=0; i< permissions.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    permissionGranted = true;
+                }
+            }
+        }
     }
 }

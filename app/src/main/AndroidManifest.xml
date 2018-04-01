@@ -134,6 +134,9 @@
                  <action android:name="course.examples.BroadcastReceiver.show_toast" >
                  </action>
              </intent-filter>
+            <intent-filter android:priority="100">
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
         </receiver>
     </application>
 
